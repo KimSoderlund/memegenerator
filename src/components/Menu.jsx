@@ -1,25 +1,16 @@
+import React, { useState } from 'react';
+
 const Menu = () => {
-
-
-    //TODO : Add state for Meme text and image selection
-const handleNewMeme = () => {
-    console.log("New Meme button clicked");
-}
-
-
+    const [showMenu, setShowMenu] = useState(false);
 
 return (
   <div>
     <h2>Menu</h2>
-    <button onClick={handleNewMeme}>New Meme</button>
+    <button onClick={() => setShowMenu(!showMenu)}>New Meme</button>
+    {showMenu && <p>Menu is open</p>}
   </div>
 )
 
 }
 
 export default Menu;
-
-
-//TODO :
-// * Add button to create new Meme
-// * Add input fields for Meme text 
