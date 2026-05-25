@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-const Menu = () => {
-    const [showMenu, setShowMenu] = useState(false);
+const Menu = ({ showMenu, setShowMenu }) => {
 
 return (
   <div>
