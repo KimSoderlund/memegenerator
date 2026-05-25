@@ -13,10 +13,12 @@ function App() {
   return (
     <div>
       <h1>App</h1>
-      <Menu showMenu={showMenu} setShowMenu={setShowMenu} />
+      <Menu showMenu={showMenu} setShowMenu={setShowMenu} topText={topText} setTopText={setTopText} bottomText={bottomText} setBottomText={setBottomText} />
       {selectedImage && (
-        <div>
+        <div className="meme">
           <img src={selectedImage} alt="Vald bild" />
+          <p className="meme-text top">{topText}</p>
+          <p className="meme-text bottom">{bottomText}</p>
         </div>
       )}
       {showMenu && <Images onSelect={setSelectedImage} />}
