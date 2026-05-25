@@ -1,4 +1,4 @@
-const Images = () => {
+const Images = ({ onSelect }) => {
     const images = [
         {id: 1, url:'src/assets/images/img1.jpg'}, 
         {id: 2, url:'src/assets/images/img2.jpg'}, 
@@ -11,7 +11,8 @@ const Images = () => {
     return (
         <div className="images">
             {images.map(image => (
-                <img key={image.id} src={image.url} alt={`Meme ${image.id}`} />
+                <img key={image.id} src={image.url} alt={`Meme ${image.id}`} 
+                onClick={() => onSelect(image.url)} />
             ))}
         </div>
     )

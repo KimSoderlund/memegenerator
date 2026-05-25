@@ -8,12 +8,18 @@ function App() {
   const [showImages, setShowImages] = useState(false);
   const [topText, setTopText] = useState('');
   const [bottomText, setBottomText] = useState('');
+  const [selectedImage, setSelectedImage] = useState(null);
 
   return (
     <div>
       <h1>App</h1>
       <Menu showMenu={showMenu} setShowMenu={setShowMenu} />
-      {showMenu && <Images />}
+      {selectedImage && (
+        <div>
+          <img src={selectedImage} alt="Vald bild" />
+        </div>
+      )}
+      {showMenu && <Images onSelect={setSelectedImage} />}
     </div>
   )
 }
