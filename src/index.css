@@ -1,0 +1,12 @@
+.images {
+    display: flex;
+    flex-direction: row;
+    overflow-x: scroll;
+    gap: 10px;
+}
+
+.images img {
+    max-height: 300px;
+    width: auto;
+    cursor: pointer;
+}
