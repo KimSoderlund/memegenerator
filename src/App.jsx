@@ -1,0 +1,48 @@
+import { useState } from 'react'
+import html2canvas from 'html2canvas'
+import './App.css'
+import Menu from './components/Menu'
+import Images from './components/Images'
+
+function saveMeme() {
+  console.log("Sparar meme...");
+  const element = document.querySelector(".meme");
+  html2canvas(element).then((canvas) => {
+    const link = document.createElement("a");
+    link.download = "meme.png";
+    link.href = canvas.toDataURL();
+    link.click();
+  });
+}
+
+function App() {
+  const [showMenu, setShowMenu] = useState(false);
+  const [showImages, setShowImages] = useState(false);
+  const [topText, setTopText] = useState('');
+  const [bottomText, setBottomText] = useState('');
+  const [topFontSize, setTopFontSize] = useState(32);
+  const [bottomFontSize, setBottomFontSize] = useState(32);
+  const [selectedImage, setSelectedImage] = useState(null);
+
+  return (
+    <div>
+      <h1>App</h1>
+      <div className="layout">
+        <Menu showMenu={showMenu} setShowMenu={setShowMenu} topText={topText} setTopText={setTopText} bottomText={bottomText} setBottomText={setBottomText} topFontSize={topFontSize} setTopFontSize={setTopFontSize} bottomFontSize={bottomFontSize} setBottomFontSize={setBottomFontSize} />
+        {selectedImage && (
+          <div className="meme-container">
+            <div className="meme">
+              <img src={selectedImage} alt="Vald bild" />
+              <p className="meme-text top" style={{ fontSize: topFontSize + 'px' }}>{topText}</p>
+              <p className="meme-text bottom" style={{ fontSize: bottomFontSize + 'px' }}>{bottomText}</p>
+            </div>
+            <button onClick={saveMeme}>Save Meme</button>
+          </div>
+        )}
+      </div>
+      {showMenu && <Images onSelect={(url) => { setSelectedImage(url); setTopText(''); setBottomText(''); }} />}
+    </div>
+  )
+}
+
+export default App

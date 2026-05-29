@@ -1,0 +1,32 @@
+.images {
+    display: flex;
+    flex-direction: row;
+    overflow-x: scroll;
+    gap: 10px;
+}
+
+.images img {
+    max-height: 300px;
+    width: auto;
+    cursor: pointer;
+}
+
+.meme {
+    position: relative;
+    display: inline-block;
+}
+
+.meme-text {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    margin: 0;
+}
+
+.meme-text.top {
+    top: 0;
+}
+
+.meme-text.bottom {
+    bottom: 0;
+}
