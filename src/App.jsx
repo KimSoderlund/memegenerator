@@ -1,7 +1,19 @@
 import { useState } from 'react'
+import html2canvas from 'html2canvas'
 import './App.css'
 import Menu from './components/Menu'
 import Images from './components/Images'
+
+function saveMeme() {
+  console.log("Sparar meme...");
+  const element = document.querySelector(".meme");
+  html2canvas(element).then((canvas) => {
+    const link = document.createElement("a");
+    link.download = "meme.png";
+    link.href = canvas.toDataURL();
+    link.click();
+  });
+}
 
 function App() {
   const [showMenu, setShowMenu] = useState(false);
@@ -21,6 +33,7 @@ function App() {
           <img src={selectedImage} alt="Vald bild" />
           <p className="meme-text top" style={{ fontSize: topFontSize + 'px' }}>{topText}</p>
           <p className="meme-text bottom" style={{ fontSize: bottomFontSize + 'px' }}>{bottomText}</p>
+          <button onClick={saveMeme}>Save Meme</button>
         </div>
       )}
       {showMenu && <Images onSelect={(url) => { setSelectedImage(url); setTopText(''); setBottomText(''); }} />}
