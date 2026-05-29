@@ -27,15 +27,19 @@ function App() {
   return (
     <div>
       <h1>App</h1>
-      <Menu showMenu={showMenu} setShowMenu={setShowMenu} topText={topText} setTopText={setTopText} bottomText={bottomText} setBottomText={setBottomText} topFontSize={topFontSize} setTopFontSize={setTopFontSize} bottomFontSize={bottomFontSize} setBottomFontSize={setBottomFontSize} />
-      {selectedImage && (
-        <div className="meme">
-          <img src={selectedImage} alt="Vald bild" />
-          <p className="meme-text top" style={{ fontSize: topFontSize + 'px' }}>{topText}</p>
-          <p className="meme-text bottom" style={{ fontSize: bottomFontSize + 'px' }}>{bottomText}</p>
-          <button onClick={saveMeme}>Save Meme</button>
-        </div>
-      )}
+      <div className="layout">
+        <Menu showMenu={showMenu} setShowMenu={setShowMenu} topText={topText} setTopText={setTopText} bottomText={bottomText} setBottomText={setBottomText} topFontSize={topFontSize} setTopFontSize={setTopFontSize} bottomFontSize={bottomFontSize} setBottomFontSize={setBottomFontSize} />
+        {selectedImage && (
+          <div className="meme-container">
+            <div className="meme">
+              <img src={selectedImage} alt="Vald bild" />
+              <p className="meme-text top" style={{ fontSize: topFontSize + 'px' }}>{topText}</p>
+              <p className="meme-text bottom" style={{ fontSize: bottomFontSize + 'px' }}>{bottomText}</p>
+            </div>
+            <button onClick={saveMeme}>Save Meme</button>
+          </div>
+        )}
+      </div>
       {showMenu && <Images onSelect={(url) => { setSelectedImage(url); setTopText(''); setBottomText(''); }} />}
     </div>
   )
